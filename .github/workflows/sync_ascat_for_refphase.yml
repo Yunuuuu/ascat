@@ -1,0 +1,22 @@
+# File: .github/workflows/repo-sync.yml
+on:
+  schedule:
+  - cron:  "23 4 * * *"
+  workflow_dispatch:
+
+name: sync_ascat_for_refphase
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        persist-credentials: false
+    - name: repo-sync
+      uses: repo-sync/github-sync@v2
+      with:
+        source_repo: "https://bitbucket.org/schwarzlab/ascat_v3_fork"
+        source_branch: "main"
+        destination_branch: "ascat_for_refphase"
+        github_token: ${{ secrets.PAT }}
