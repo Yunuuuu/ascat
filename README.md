@@ -1,3 +1,17 @@
+# THIS IS A FORK OF THE ORIGINAL ASCAT REPOSITORY TO BE USED IN CONJUNCTION WITH REFPHASE
+
+This repository is a fork of the original [ascat repository](https://github.com/VanLoo-lab/ascat). It makes slight changes to ASCAT version 3 so it can be used as the copy-number calling tool for later processing with [Refphase](https://bitbucket.org/schwarzlab/refphase).
+
+Install with `devtools::install_bitbucket("schwarzlab/ascat_v3_fork")`
+
+How to use this fork:
+* push to fork: `git push origin`
+* pull from original repo: `git remote add sync git@github.com:VanLoo-lab/ascat.git` and `git pull sync master`
+More information [found here](https://gist.github.com/sangeeths/9467061)
+
+---
+
+
 # Allele-Specific Copy Number Analysis of Tumors
 
 ## Description

@@ -144,15 +144,18 @@ ascat.getBAFsAndLogRs = function(samplename, tumourAlleleCountsFile.prefix, norm
   write.table(germline.BAF_unmirrored,file=gsub('\\.txt$','_rawBAF.txt',normalBAF_file), row.names=T, quote=F, sep="\t", col.names=NA)
   rm(normalBAF_unmirrored,tumourBAF_unmirrored,germline.BAF_unmirrored,tumor.BAF_unmirrored)
   # Randomise A and B alleles
-  selector = round(runif(len))
-  normalBAF[which(selector==0)] = normCount1[which(selector==0)] / totalNormal[which(selector==0)]
-  normalBAF[which(selector==1)] = normCount2[which(selector==1)] / totalNormal[which(selector==1)]
-  tumourBAF[which(selector==0)] = mutCount1[which(selector==0)] / totalTumour[which(selector==0)]
-  tumourBAF[which(selector==1)] = mutCount2[which(selector==1)] / totalTumour[which(selector==1)]
+  #selector = round(runif(len))
+  #normalBAF[which(selector==0)] = normCount1[which(selector==0)] / totalNormal[which(selector==0)]
+  #normalBAF[which(selector==1)] = normCount2[which(selector==1)] / totalNormal[which(selector==1)]
+  #tumourBAF[which(selector==0)] = mutCount1[which(selector==0)] / totalTumour[which(selector==0)]
+  #tumourBAF[which(selector==1)] = mutCount2[which(selector==1)] / totalTumour[which(selector==1)]
+  
+  tumourBAF = mutCount2/totalTumour
+  normalBAF = normCount2/totalNormal
   # Normalise tumourLogR to normalLogR
   tumourLogR = totalTumour/totalNormal
   tumourLogR = log2(tumourLogR/mean(tumourLogR, na.rm=T))
-  rm(selector)
+  #rm(selector)
   # For males, chrX needs to be adjusted as logR baseline will be 0 because of T/N ratio
   if (gender=='XY') {
     # PAR1 and PAR2 information should be a mix of chrX and chrY so we should expect 1+1 (1 from X and 1 from Y).
