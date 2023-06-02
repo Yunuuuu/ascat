@@ -31,6 +31,8 @@ Depends:
     doParallel,
     foreach,
     utils
+Imports: 
+    S4Vectors
 License: GPL-3
 Encoding: UTF-8
 LazyLoad: yes

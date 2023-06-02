@@ -869,9 +869,9 @@ diploidprobes_fixnonPAR=function(diploidprobes,SNP_data,nonPAR,seg_info) {
   FO=GenomicRanges::findOverlaps(nonPAR,SEGMENTS)
   if (length(FO)==0) return(diploidprobes)
   # For each segment, compute the size of the overlap relative to segment size. Only keep segments with high overlap (>50%) with nonPAR
-  FO=FO[width(GenomicRanges::pintersect(nonPAR[queryHits(FO)], SEGMENTS[subjectHits(FO)]))/width(SEGMENTS[subjectHits(FO)])>0.5]
+  FO=FO[IRanges::width(GenomicRanges::pintersect(nonPAR[S4Vectors::queryHits(FO)], SEGMENTS[S4Vectors::subjectHits(FO)]))/IRanges::width(SEGMENTS[S4Vectors::subjectHits(FO)])>0.5]
   if (length(FO)==0) return(diploidprobes)
-  SEGMENTS=data.frame(SEGMENTS[subjectHits(FO)])
+  SEGMENTS=data.frame(SEGMENTS[S4Vectors::subjectHits(FO)])
   # For each such segment, set all SNPs within that segment to diploidprobes=F
   for (i in 1:nrow(SEGMENTS)) {
     diploidprobes[which(SNP_data[,1]=='X' & SNP_data[,2]>=SEGMENTS$start[i] & SNP_data[,2]<=SEGMENTS$end[i])]=F
