@@ -2,7 +2,7 @@
 
 This repository is a fork of the original [ascat repository](https://github.com/VanLoo-lab/ascat). It makes slight changes to ASCAT version 3 so it can be used as the copy-number calling tool for later processing with [Refphase](https://bitbucket.org/schwarzlab/refphase).
 
-Install with `devtools::install_bitbucket("schwarzlab/ascat_v3_fork")`
+Install with `devtools::install_bitbucket("schwarzlab/ascat_v3_fork/ASCAT")`
 
 How to use this fork:
 * push to fork: `git push origin`
